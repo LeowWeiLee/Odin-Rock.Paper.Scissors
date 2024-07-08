@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Page Title</title>
+  </head>
+  <body>
+    <script>
+      // Your JavaScript goes here!
+      const choice1 = "scissors";
+      const choice2 = "paper";
+      const choice3 = "rock";
+      gameChoices = [choice1, choice2, choice3];
+
+      let humanScore = 0;
+      let computerScore = 0;
+
+      function getComputerChoice() {
+        let i = Math.floor(Math.random() * 3);
+        return gameChoices[i];
+      }
+
+      function getHumanChoice() {
+        let promptHumanChoice = prompt("What's your choice?");
+        humanChoiceResult = promptHumanChoice.toLowerCase();
+        return humanChoiceResult;
+      }
+
+      function playRound(humanChoice, computerChoice) {
+        let humanChoicePlay = humanChoice;
+        let computerChoicePlay = computerChoice;
+        if (humanChoice === computerChoice) {
+          console.log("Human Choice: " + humanChoice);
+          console.log("Computer Choice: " + computerChoice);
+          console.log("DRAW");
+        } else if (humanChoice === "rock" && computerChoice === "paper") {
+          console.log("Human Choice: " + humanChoice);
+          console.log("Computer Choice: " + computerChoice);
+          console.log("LOSE");
+          computerScore++;
+        } else {
+          console.log("Human Choice: " + humanChoice);
+          console.log("Computer Choice: " + computerChoice);
+          console.log("WIN");
+          humanScore++;
+        }
+      }
+
+      let i = 0;
+      do {
+        let humanSelection = getHumanChoice();
+        let computerSelection = getComputerChoice();
+        playRound(humanSelection, computerSelection);
+        i++;
+
+        console.log(humanScore);
+        console.log(computerScore);
+      } while (i < 5);
+    </script>
+  </body>
+</html>
